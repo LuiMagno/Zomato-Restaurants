@@ -4,9 +4,6 @@
 import pandas as pd
 import streamlit as st
 from PIL import Image
-import folium
-from folium.plugins import MarkerCluster
-from streamlit_folium import folium_static
 import plotly.express       as px
 import plotly.graph_objects as go
 from matplotlib             import pyplot as plt
