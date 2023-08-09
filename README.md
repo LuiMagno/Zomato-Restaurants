@@ -61,3 +61,6 @@ A plataforma Zomato Restaurants tem uma presença global marcante, com uma forte
 1. Melhorar a visualização de resultados, ampliando o leque de ferramentas que as bibliotecas de gráficos fornecem;
 2. Melhorar a formatação de dados para que avaliações e comparações entre restaurantes e países seja mais justa e precisa
 3. Analise os possíveis custos e vantagens de ampliar ou reduzir a diversidade gastronômica, levando em consideração os preços dos pratos e as avaliações dos restaurantes.
+
+# Chegue o Resultado do projeto abaixo:
+https://ftc-zomato-restaurants-luimagno-r3bejr9w2wbdge5azysb3g.streamlit.app
