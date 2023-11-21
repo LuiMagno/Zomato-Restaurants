@@ -43,6 +43,7 @@ Bottleneck @ file:///C:/ci_311/bottleneck_1676500016583/work
 branca @ file:///C:/ci_311/branca_1677725401139/work
 brotlipy==0.7.0
 cachetools @ file:///tmp/build/80754af9/cachetools_1619597386817/work
+category-encoders @ file:///C:/b/abs_43cfawn5v3/croot/category_encoders_1689960882626/work
 certifi @ file:///C:/b/abs_36eb5mzhph/croot/certifi_1690232276943/work/certifi
 cffi @ file:///C:/ci_311/cffi_1676423759166/work
 chardet @ file:///C:/ci_311/chardet_1676436134885/work
@@ -240,7 +241,7 @@ pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
 pyct @ file:///C:/ci_311/pyct_1676438538057/work
 pycurl==7.45.2
 pydantic @ file:///C:/b/abs_9byjrk31gl/croot/pydantic_1695798904828/work
-pydeck @ file:///C:/ci_311/pydeck_1678294245657/work
+pydeck==0.8.1b0
 PyDispatcher==2.0.5
 pydocstyle @ file:///C:/ci_311/pydocstyle_1678402028085/work
 pyerfa @ file:///C:/ci_311/pyerfa_1676503994641/work
@@ -326,7 +327,9 @@ spyder-kernels @ file:///C:/b/abs_e788a8_4y9/croot/spyder-kernels_1691599588437/
 SQLAlchemy @ file:///C:/b/abs_d3tao6jnck/croot/sqlalchemy_1695720955292/work
 stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
 statsmodels @ file:///C:/b/abs_7bth810rna/croot/statsmodels_1689937298619/work
-streamlit @ file:///C:/b/abs_702yi_k5m2/croot/streamlit_1689180008592/work
+streamlit==1.27.2
+streamlit-folium==0.15.0
+streamlit-vertical-slider @ file:///C:/b/abs_85pm1w_vsq/croot/streamlit-vertical-slider_1682537014494/work
 sympy @ file:///C:/ci_311_rebuilds/sympy_1679009400182/work
 tables @ file:///C:/b/abs_0626auep9v/croot/pytables_1691623892917/work
 tabulate @ file:///C:/ci_311/tabulate_1676494503192/work
