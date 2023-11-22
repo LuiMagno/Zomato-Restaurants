@@ -28,8 +28,8 @@ print(df.head())
 # ==============================
 # Sidebar 
 # ==============================
-st.sidebar.image('comunidade.png', width=50)
-st.sidebar.markdown('### Fome Zero')
+st.sidebar.image('tomato.png', width=50)
+st.sidebar.markdown('### :red[ZOMATO RESTAURANTS!]')
 st.sidebar.markdown("""___""")
 
 st.sidebar.markdown('# Filtros')
@@ -38,7 +38,7 @@ paises = df['country_name'].unique()
 # Filtros
 paises = list (df['country_name'].unique())
 country_opitions = st.sidebar.multiselect(
-    'Escolha os países que deseja visualizar os restaurantes:', paises, default = paises)
+    'Escolha os países que deseja visualizar os restaurante:', paises, default=['Brazil', 'India', 'United States of America', 'England', 'South Africa'])
 
 linhas = df['country_name'].isin(country_opitions)
 df = df.loc[linhas, :]
@@ -49,8 +49,8 @@ st.sidebar.markdown ('###### Data Analyst: Lui Magno')
 # ==============================
 # Visão Geral
 # ==============================
-st.header('Fome Zero!')
-st.subheader('O Melhor lugar para encontrar seu mais novo restaurante favorito!')
+st.header(':red[ZOMATO RESTAURANTS!]')
+st.subheader(':red[O Melhor lugar para encontrar seu mais novo restaurante favorito!]', divider='red')
 
 st.subheader('Temos as seguintes marcas dentro da nossa plataforma:')
 
@@ -77,6 +77,7 @@ with st.container():
             col5.metric(label='Tipos de Culinárias Oferecidas', value=tipos_culinaria)
 
 # Linha 2 - Mapa Mundi 
+st.subheader('Abaixo, utilizamos um mapa múndi de restaurantes cadastrados onde você pode explorar manualmente nossos restaurantes, com várias informações como tipo de culinária, notas e localidade!')
 with st.container():
     datamap = df[['restaurant_name', 'longitude', 'latitude', 'cuisines', 'average_cost_for_two', 'currency', 'aggregate_rating', 'rating_color']].reset_index(drop = True)
     

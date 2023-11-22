@@ -38,8 +38,8 @@ def bar_chart(data, x, y, color, title, textauto):
 # ==============================
 # Sidebar 
 # ==============================
-st.sidebar.image('comunidade.png', width=50)
-st.sidebar.markdown('### Fome Zero')
+st.sidebar.image('tomato.png', width=50)
+st.sidebar.markdown('### :red[ZOMATO RESTAURANTS!]')
 st.sidebar.markdown("""___""")
 
 st.sidebar.markdown('#### Filtros')
@@ -48,20 +48,21 @@ paises = df['country_name'].unique()
 # Filtros
 paises = list (df['country_name'].unique())
 country_opitions = st.sidebar.multiselect(
-    'Escolha os países que deseja visualizar os restaurantes:', paises, default = paises)
+    'Escolha os países que deseja visualizar os restaurante:', paises, default=['Brazil', 'India', 'United States of America', 'England', 'South Africa'])
 
 linhas = df['country_name'].isin(country_opitions)
 df = df.loc[linhas, :]
 
 st.sidebar.markdown("""___""")
 
-st.sidebar.markdown('#### Feito por Lui Magno') 
+st.sidebar.markdown ('###### Powered by Comunidade DS')
+st.sidebar.markdown ('###### Data Analyst: Lui Magno') 
 
 # ==============================
 # Visão Cidades
 # ==============================
 
-st.header('🏙️ Visão Cidades')
+st.header('🏙️ :red[Visão Cidades]')
 
 with st.container():
     # Top 10 cidades com mais restaurantes na base de dados
@@ -115,3 +116,16 @@ with st.container():
     df_aux.columns = ['País', 'Cidade', 'Restaurantes']
     fig = bar_chart(df_aux, 'Cidade', 'Restaurantes', 'País', 'Top 10 cidades com mais restaurantes com tipos de culinária distintos', True)
     st.plotly_chart(fig, use_container_width = True, theme='streamlit')
+    
+    
+with st.container():
+    # Coluna Experimental - Treemapgraph
+    st.markdown('#### Restaurantes por Cidade: ')
+    st.markdown('###### Quantidade de Restaurantes por Cidade')
+    
+    fig = px.pie(df_final, values='Restaurantes', names='Cidade')
+    st.plotly_chart(fig, use_container_width = True, theme='streamlit')
+    
+   
+    
+    

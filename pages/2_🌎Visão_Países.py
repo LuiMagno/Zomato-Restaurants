@@ -31,12 +31,19 @@ def bar_chart(data, x, y, color, title, textauto):
     fig = px.bar(data, x = x, y = y, color=color, text_auto=textauto, title = title, template='seaborn')
     return fig
 
+def treemap_graph(data, path, value, color):
+    
+    fig = px.treemap(data, path=[path], values=value, color = color, color_continuous_scale = 'RdBu',
+           template ='plotly_white')
+    fig.data[0].texttemplate = "<b>%{label}</b><br>Qt. Culinárias: %{value}<br>"
+    
+    return fig
     
 # ==============================
 # Sidebar 
 # ==============================
-st.sidebar.image('comunidade.png', width=50)
-st.sidebar.markdown('### Fome Zero')
+st.sidebar.image('tomato.png', width=50)
+st.sidebar.markdown('### :red[ZOMATO RESTAURANTS!]')
 st.sidebar.markdown("""___""")
 
 st.sidebar.markdown('#### Filtros')
@@ -45,19 +52,20 @@ paises = df['country_name'].unique()
 # Filtros
 paises = list (df['country_name'].unique())
 country_opitions = st.sidebar.multiselect(
-    'Escolha os países que deseja visualizar os restaurantes:', paises, default = paises)
+    'Escolha os países que deseja visualizar os restaurante:', paises, default=['Brazil', 'India', 'United States of America', 'England', 'South Africa'])
 
 linhas = df['country_name'].isin(country_opitions)
 df = df.loc[linhas, :]
 
 st.sidebar.markdown("""___""")
 
-st.sidebar.markdown('#### Feito por Lui Magno') 
+st.sidebar.markdown ('###### Powered by Comunidade DS')
+st.sidebar.markdown ('###### Data Analyst: Lui Magno')  
 
 # ==============================
 # Visão Países
 # ==============================
-st.header('🌎 Visão Países')
+st.header('🌎 :red[Visão Países]')
 
 
 with st.container():
@@ -108,3 +116,16 @@ with st.container():
         fig = bar_chart(df_aux, 'Países', 'Prato para 2 pessoas', 'Países', 'Média de preço de prato para duas pessoas por país', True)
         st.plotly_chart(fig, use_container_width = True, theme='streamlit')
         
+
+with st.container():
+    # Coluna Experimental - Treemapgraph
+    st.markdown('#### Diversidade Gastronômica: ')
+    st.markdown('###### Quantidade de culinárias únicas por país - Treemap Graph')
+
+    contagem = df_root[['country_name','cuisines']].groupby('country_name').nunique().sort_values('cuisines', ascending = False).reset_index()
+    contagem.columns=['País','Culinárias']
+
+    fig = treemap_graph(contagem, path='País', value='Culinárias', color='Culinárias')
+    st.plotly_chart(fig, use_container_width = True, theme='streamlit')
+    
+    

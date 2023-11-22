@@ -57,8 +57,8 @@ def melhor_restaurante(tipo):
 # ==============================
 # Sidebar 
 # ==============================
-st.sidebar.image('comunidade.png', width=50)
-st.sidebar.markdown('### Fome Zero')
+st.sidebar.image('tomato.png', width=50)
+st.sidebar.markdown('### :red[ZOMATO RESTAURANTS!]')
 st.sidebar.markdown("""___""")
 
 st.sidebar.markdown('#### Filtros')
@@ -68,7 +68,7 @@ paises = df['country_name'].unique()
 # Países
 paises = list (df['country_name'].unique())
 country_opitions = st.sidebar.multiselect(
-    'Escolha os países que deseja visualizar os restaurantes:', paises, default = paises)
+    'Escolha os países que deseja visualizar os restaurante:', paises, default=['Brazil', 'India', 'United States of America', 'England', 'South Africa'])
 
 linhas = df['country_name'].isin(country_opitions)
 df = df.loc[linhas, :]
@@ -82,18 +82,19 @@ num_slider = st.sidebar.slider('Selecione a quantidade de Restaurantes que desej
 # Tipos de culinária
 culinarias = list (df['cuisines'].unique())
 culinarias_options = st.sidebar.multiselect(
-    'Escolha os tipos de culinária que deseja visualizar:', culinarias, default = ['Home-made', 'BBQ', 'Japanese', 'Brazilian', 'Arabian', 'American'])
+    'Escolha os tipos de culinária que deseja visualizar:', culinarias)
 
 linhas = df['cuisines'].isin(culinarias_options)
 df_culinaria = df.loc[linhas, :]
 st.sidebar.markdown("""___""")
 
-st.sidebar.markdown('#### Feito por Lui Magno') 
+st.sidebar.markdown ('###### Powered by Comunidade DS')
+st.sidebar.markdown ('###### Data Analyst: Lui Magno') 
 
 # ==============================
 # Visão Restaurantes
 # ==============================
-st.header(':knife_fork_plate: Visão Tipos de Culinárias')
+st.header(':knife_fork_plate: :red[Visão Restaurantes]')
 st.subheader('Melhores restaurantes dos principais tipos culinários.')
 
 
@@ -158,3 +159,15 @@ with st.container():
         st.plotly_chart(fig, use_container_width = True, theme='streamlit')
         
     
+with st.container():
+    
+    st.header('As '+ str(num_slider) +  ' culinárias mais ofertadas')
+    st.text('Quantidades de tipos de culinária')
+    
+    contagem = df[['cuisines', 'restaurant_id']].groupby('cuisines').count().sort_values('restaurant_id', ascending = False).reset_index().head(num_slider)
+    contagem.columns=['Gastronomia', 'Qt. Restaurantes']
+
+    fig = px.funnel(contagem, x='Qt. Restaurantes', y='Gastronomia', color='Gastronomia', template='seaborn')
+    fig.update(layout_showlegend=False)
+
+    st.plotly_chart(fig, use_container_width = True, theme='streamlit')
