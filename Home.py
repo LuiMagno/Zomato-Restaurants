@@ -36,4 +36,5 @@ st.markdown(
     ### :red[Alguma dúvida? Fale comigo!]
     - LinkedIn: https://www.linkedin.com/in/lui-magno/
     - Github: https://github.com/LuiMagno
-""")
+"""
+)

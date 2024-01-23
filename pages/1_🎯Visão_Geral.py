@@ -36,7 +36,7 @@ st.sidebar.markdown('# Filtros')
 paises = df['country_name'].unique()
 
 # Filtros
-paises = list (df['country_name'].unique())
+paises = list(df['country_name'].unique())
 country_opitions = st.sidebar.multiselect(
     'Escolha os países que deseja visualizar os restaurante:', paises, default=['Brazil', 'India', 'United States of America', 'England', 'South Africa'])
 
@@ -100,3 +100,4 @@ with st.container():
     # Exibindo o mapa
     folium_static(map, width = 1024, height = 600)  
 # ---------------------------------------------------------------------
+

@@ -75,7 +75,7 @@ with st.container():
                                                          .sort_values(by='restaurant_id',ascending = False )
                                                          .reset_index())
     df_aux.columns = ['País', 'Num. Restaurantes']
-    
+    df_aux_mundi = df_aux.copy()
     fig = bar_chart(df_aux, 'País', 'Num. Restaurantes', 'País', 'Quantidade de Restaurantes registrados por país', True)
     st.plotly_chart(fig, use_container_width = True, theme='streamlit')
     
@@ -129,3 +129,13 @@ with st.container():
     st.plotly_chart(fig, use_container_width = True, theme='streamlit')
     
     
+
+with st.container():
+    fig = px.scatter_geo(df_aux_mundi, locations="País", color="País", hover_name="País", size="Num. Restaurantes", projection="natural earth")
+    
+    
+    
+    df = px.data.gapminder()
+    fig = px.scatter_geo(df, locations="iso_alpha", color="continent", hover_name="country", size="pop",
+               animation_frame="year", projection="natural earth")
+    st.plotly_chart(fig, use_container_width = True, theme='streamlit')
